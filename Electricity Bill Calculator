@@ -1,0 +1,116 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon May 16 23:55:28 2022
+
+@author: apple
+"""
+import pandas as pd
+"""sets-kumeler"""
+# problem paramterelerinin oluşturduğu kümeler olabilir
+
+
+"""parameters-sabitler""" 
+# disaridan gelen ve bilinen degerler
+
+mesken_7kWh_dusuk = 112.4105
+mesken_7kWh_yuksek = 167.8312
+
+sanayi_tek = 191.7712
+ticarethane_tek = 222.065
+tarimsal_sulama_tek = 167.5809
+aydinlatma_tek = 206,4765
+
+mesken_gunduz = 169.9990
+mesken_puant = 248.9372
+mesken_gece = 106.8724
+
+
+sanayi_gunduz = 193.7409
+sanayi_puant = 287.9227
+sanayi_gece = 117.7270
+
+ticarethane_gunduz = 224.5286
+ticarethane_puant = 328.9164
+ticarethane_gece = 141.4713
+
+tarimsal_sulama_gunduz = 171.2557
+tarimsal_sulama_puant = 249.0833
+tarimsal_sulama_gece = 104.9769
+
+kac_gunluk_fatura = int(input("faturaniz kac gun icin kesiliyor?"))
+# faturanın kaç gün için kesildiğini sorduk.
+tuketilen_toplam_energy = int(input("tuketilen toplam enerji miktariniz nedir?"))
+# tüketicinin toplam harcamasını sorduk.
+
+limit_energy = kac_gunluk_fatura * 7
+#  günlük 7 kWh'den bir ayda düşük fiyattan harcanılabilecek maksimum enerjiyi hesapladık. faturada bu miktarı geçince geçen kısmı yüksek fiyattan hesaplayacağız
+
+gunduz = int(input("gunduz tuketim miktarini giriniz:"))
+puant= int(input("puant tuketim miktarini giriniz:")) 
+gece = int(input("gece tuketim miktarini giriniz:")) 
+#  tüketicinin harcamalarının gün içerisindeki dağılımını sorduk, 3 zamanlı faturayı hesaplarken bu miktarları kullanacağız
+
+zaman = int(input("faturaniz kac zamanli (1/3)"))
+# tüketicinin faturasının tek zamanlı mı 3 zamanlı mı olduğunu sorduk.
+tuketici =input('hangi tip tuketicisiniz? (sanayi/mesken/ticarethane/tarimsal_sulama/aydinlatma)')
+
+
+"""variables-degiskenler""" 
+# bulmayi hedeflediğimiz bilinmeyen degerler
+
+fatura
+fatura_alternatif
+
+"""objective function-amac fonksiyonu""" 
+# minimizasyon veya maksimizasyon yapmaya calistigimiz amac fonksiyonu
+
+minimizasyon('fatura')
+for g in range(dag_nok_sayi):
+    gocuk_rand.append(np.random.randint(2, size=1))
+
+"""constraints-kisitlar""" 
+# problemdeki kisitlarin matematiksel ifadesi
+
+
+
+"""solving""" 
+# bu kisimda problemin cozulmesi icin komutlar verilir
+prob = cp.Problem(obj, conslist)
+prob.solve()
+print(prob.status)
+
+""" printing response-sonuclari yazdirma""" 
+# bulunan degisken degerlerini kod icerisinde veya excel'e yazdırma bu bolumde yapilir
+
+rapor = pd.DataFrame()
+rapor.loc[0,0] = "faturaniz kac gun icin kesiliyor?"
+rapor.loc[0,1] = kac_gunluk_fatura
+rapor.loc[1,0] = "tuketilen toplam enerji miktariniz nedir?"
+rapor.loc[1,1] = tuketilen_toplam_energy 
+rapor.loc[2,0] = "gunduz tuketim miktarini giriniz:"
+rapor.loc[2,1] = gunduz
+rapor.loc[3,0] = "puant tuketim miktarini giriniz:"
+rapor.loc[3,1] = puant
+rapor.loc[4,0] = "gece tuketim miktarini giriniz:"
+rapor.loc[4,1] = gece
+rapor.loc[5,0] = "faturaniz kac zamanli (1/3)"
+rapor.loc[5,1] = zaman
+rapor.loc[6,0] = 'hangi tip tuketicisiniz? (sanayi/mesken/ticarethane/tarimsal_sulama/aydinlatma)'
+rapor.loc[6,1] = tuketici
+rapor.loc[7,0] = 'Fatura'
+rapor.loc[7,1] = fatura
+rapor.loc[8,0] = 'Alternatif fatura'
+rapor.loc[8,1] = fatura_alternatif
+rapor.loc[9,0] = 'fatura onerisi'
+if fatura_alternatif < fatura:
+    rapor.loc[9,1] = 'dogru tarifedesiniz.'
+elif fatura < fatura_alternatif:
+    rapor.loc[9,1] = 'tarifenizi degistirmeniz gerekiyor.' 
+
+
+
+
+
+rapor.to_excel("rapor.xlsx")
+
